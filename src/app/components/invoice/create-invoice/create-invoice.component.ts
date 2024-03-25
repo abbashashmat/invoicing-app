@@ -71,7 +71,9 @@ export class CreateInvoiceComponent {
       this.invoices.push(this.invoiceForm.value)
       localStorage.setItem('invoices', JSON.stringify(this.invoices))
       console.log('All invoices:-', this.invoices);
-      this.router.navigate(['/']);
+      alert('Invoice created successfully!')
+      this.router.navigate(['']);
+      location.reload()
     }
   }
 
