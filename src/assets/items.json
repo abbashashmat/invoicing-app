@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Item 1",
+    "img": "./assets/imgs/1.png",
+    "quantities": 5,
+    "price": 10.99,
+    "payment_status": "Paid",
+    "payment_type": "Credit Card"
+  },
+  {
+    "id": 2,
+    "name": "Item 2",
+    "img": "./assets/imgs/2.png",
+    "quantities": 3,
+    "price": 5.99,
+    "payment_status": "Pending",
+    "payment_type": "PayPal"
+  },
+  {
+    "id": 3,
+    "name": "Item 3",
+    "img": "./assets/imgs/3.png",
+    "quantities": 1,
+    "price": 20.49,
+    "payment_status": "Paid",
+    "payment_type": "Credit Card"
+  },
+  {
+    "id": 4,
+    "name": "Item 4",
+    "img": "./assets/imgs/4.png",
+    "quantities": 2,
+    "price": 15.75,
+    "payment_status": "Paid",
+    "payment_type": "Credit Card"
+  },
+  {
+    "id": 5,
+    "name": "Item 5",
+    "img": "./assets/imgs/1.png",
+    "quantities": 4,
+    "price": 8.49,
+    "payment_status": "Pending",
+    "payment_type": "PayPal"
+  },
+  {
+    "id": 6,
+    "name": "Item 6",
+    "img": "./assets/imgs/2.png",
+    "quantities": 3,
+    "price": 12.99,
+    "payment_status": "Pending",
+    "payment_type": "Credit Card"
+  },
+  {
+    "id": 7,
+    "name": "Item 7",
+    "img": "./assets/imgs/3.png",
+    "quantities": 2,
+    "price": 18.99,
+    "payment_status": "Paid",
+    "payment_type": "Credit Card"
+  },
+  {
+    "id": 8,
+    "name": "Item 8",
+    "img": "./assets/imgs/4.png",
+    "quantities": 1,
+    "price": 25.49,
+    "payment_status": "Paid",
+    "payment_type": "PayPal"
+  },
+  {
+    "id": 9,
+    "name": "Item 9",
+    "img": "../assets/imgs/1.png",
+    "quantities": 6,
+    "price": 6.99,
+    "payment_status": "Pending",
+    "payment_type": "Credit Card"
+  },
+  {
+    "id": 10,
+    "name": "Item 10",
+    "img": "./assets/imgs/2.png",
+    "quantities": 2,
+    "price": 30.99,
+    "payment_status": "Pending",
+    "payment_type": "PayPal"
+  }
+]
