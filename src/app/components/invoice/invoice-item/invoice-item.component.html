@@ -1,0 +1,13 @@
+<div class="card-body">
+  <div>
+    <h5 class="card-title"> {{invoice?.name}}</h5>
+    <p class="card-text"> Price: {{invoice?.price }} </p>
+    <p class="card-text"> Quantity: {{invoice?.price }} </p>
+    <p class="card-text"> Payment Status: {{invoice?.paymentStatus }} </p>
+    <p class="card-text"> Payment Type: {{invoice?.paymentType }} </p>
+    <div class="d-flex align-items-center justify-content-between" *ngIf="user?.role == userRoles?.Admin">
+      <button class="btn btn-primary" (click)="editInvoice(invoice?.id)"> Edit</button>
+      <button class="btn btn-primary" [routerLink]="['/create_invoice', invoice?.id]"> Delete</button>
+    </div>
+  </div>
+</div>
