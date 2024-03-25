@@ -34,9 +34,10 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="paymentType" class="form-label">Items</label>
-              <select multiple class="form-select" id="paymentType" formControlName="selectedItems">
-                <option value="cash" *ngFor="let item of items">{{item.name}}</option>
+              <label for="selectedItem" class="form-label">Items</label>
+              <select class="form-select" id="selectedItem" [(ngModel)]="selectedItem"
+                [ngModelOptions]="{standalone: true}">
+                <option value="cash" *ngFor="let item of items" [value]="item.id">{{item.name}}</option>
               </select>
             </div>
             <button *ngIf="!this.invoiceID" type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>

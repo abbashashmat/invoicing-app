@@ -26,7 +26,6 @@ export class LoginComponent {
         if (user) {
           alert('Login successful');
           localStorage.setItem('userId', user.id)
-          // Redirect or perform other actions upon successful login
           this.router.navigate(['/']);
         } else {
           alert('Invalid username or password');

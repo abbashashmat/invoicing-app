@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class InvoiceItemComponent {
   @Input() invoice: any;
+  invoices: any = []
 
   userRoles = UserRoles;
   user!: User
@@ -24,5 +25,23 @@ export class InvoiceItemComponent {
 
   editInvoice(id: string): void {
     this.router.navigate(['/create_invoice'], { state: { id } });
+  }
+
+  deleteInvoice(id: string) {
+    localStorage.getItem('invoices')
+    if (localStorage.getItem('invoices')) {
+      let data = localStorage.getItem('invoices')
+      data ? this.invoices = JSON.parse(data) : []
+      console.log('invoices:-', this.invoices)
+    }
+    localStorage.removeItem('invoices')
+    let del_invoice = this.invoices.find((x: any) => x.id == id)
+    const index = this.invoices.indexOf(del_invoice);
+    if (index !== -1) {
+      this.invoices.splice(index, 1);
+    }
+    localStorage.setItem('invoices', JSON.stringify(this.invoices))
+    alert('Invoice Deleted Successfully!')
+    location.reload()
   }
 }

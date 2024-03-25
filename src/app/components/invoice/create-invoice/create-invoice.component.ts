@@ -16,6 +16,7 @@ export class CreateInvoiceComponent {
   invoiceID!: string
   updatedInvoice: any
   characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  selectedItem: any
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -27,7 +28,6 @@ export class CreateInvoiceComponent {
       price: ['', Validators.required],
       paymentStatus: ['pending', Validators.required],
       paymentType: ['cash', Validators.required],
-      selectedItems: [[]]
     });
 
     this.itemService.getItems().subscribe((res) => {
@@ -49,25 +49,25 @@ export class CreateInvoiceComponent {
         quantity: this.updatedInvoice.quantity,
         price: this.updatedInvoice.price,
         paymentStatus: this.updatedInvoice.paymentStatus,
-        paymentType: this.updatedInvoice.paymentType
+        paymentType: this.updatedInvoice.paymentType,
       })
+      this.selectedItem = this.updatedInvoice.selectedItem
     }
   }
 
   onSubmit(): void {
     if (this.invoiceForm.invalid) {
-      // If foem is invalid
       return
     }
 
     if (this.invoiceForm.valid) {
-      debugger
-      // Submit the form data
       let data = localStorage.getItem('invoices')
       data ? this.invoices = JSON.parse(data) : []
       console.log('invoices:-', this.invoices)
       localStorage.removeItem('invoices')
       Object.assign(this.invoiceForm.value, { id: this.generateRandomKey() })
+      let item = this.items.find((u: any) => u.id === Number(this.selectedItem));
+      Object.assign(this.invoiceForm.value, { item: item })
       this.invoices.push(this.invoiceForm.value)
       localStorage.setItem('invoices', JSON.stringify(this.invoices))
       console.log('All invoices:-', this.invoices);
@@ -81,7 +81,6 @@ export class CreateInvoiceComponent {
       this.invoices.splice(index, 1);
     }
     if (this.invoiceForm.invalid) {
-      // If foem is invalid
       return
     }
 
@@ -98,5 +97,9 @@ export class CreateInvoiceComponent {
   generateRandomKey() {
     const randomIndex = Math.floor(Math.random() * this.characters.length);
     return randomIndex;
+  }
+
+  onSelectionChange(eve: any) {
+    console.log('Selected items:', this.invoiceForm.get('selectedItems'));
   }
 }
