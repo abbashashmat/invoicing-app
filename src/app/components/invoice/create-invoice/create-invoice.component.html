@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Create Invoice</div>
+        <div class="card-body">
+          <form [formGroup]="invoiceForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter name">
+            </div>
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="quantity" formControlName="quantity"
+                placeholder="Enter quantity">
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" id="price" formControlName="price" placeholder="Enter price">
+            </div>
+            <div class="mb-3">
+              <label for="paymentStatus" class="form-label">Payment Status</label>
+              <select class="form-select" id="paymentStatus" formControlName="paymentStatus">
+                <option value="pending">Pending</option>
+                <option value="paid">Paid</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="paymentType" class="form-label">Payment Type</label>
+              <select class="form-select" id="paymentType" formControlName="paymentType">
+                <option value="cash">Cash</option>
+                <option value="credit">Credit</option>
+                <option value="debit">Debit</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="paymentType" class="form-label">Items</label>
+              <select multiple class="form-select" id="paymentType" formControlName="selectedItems">
+                <option value="cash" *ngFor="let item of items">{{item.name}}</option>
+              </select>
+            </div>
+            <button *ngIf="!this.invoiceID" type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            <button *ngIf="this.invoiceID" type="submit" class="btn btn-primary" (click)="update()">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
