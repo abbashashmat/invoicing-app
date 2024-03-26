@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Item 1",
+    "name": "Shoe",
     "img": "./assets/imgs/1.png",
     "quantities": 5,
     "price": 10.99,
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "name": "Item 2",
+    "name": "Book",
     "img": "./assets/imgs/2.png",
     "quantities": 3,
     "price": 5.99,
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "name": "Item 3",
+    "name": "Basket Ball",
     "img": "./assets/imgs/3.png",
     "quantities": 1,
     "price": 20.49,
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "name": "Item 4",
+    "name": "Cricket Bat",
     "img": "./assets/imgs/4.png",
     "quantities": 2,
     "price": 15.75,
@@ -37,7 +37,7 @@
   },
   {
     "id": 5,
-    "name": "Item 5",
+    "name": "Wooden Stool",
     "img": "./assets/imgs/1.png",
     "quantities": 4,
     "price": 8.49,
@@ -46,7 +46,7 @@
   },
   {
     "id": 6,
-    "name": "Item 6",
+    "name": "Wool Sweater",
     "img": "./assets/imgs/2.png",
     "quantities": 3,
     "price": 12.99,
@@ -55,7 +55,7 @@
   },
   {
     "id": 7,
-    "name": "Item 7",
+    "name": "Blutooth Speaker",
     "img": "./assets/imgs/3.png",
     "quantities": 2,
     "price": 18.99,
@@ -64,7 +64,7 @@
   },
   {
     "id": 8,
-    "name": "Item 8",
+    "name": "Laptop",
     "img": "./assets/imgs/4.png",
     "quantities": 1,
     "price": 25.49,
@@ -73,7 +73,7 @@
   },
   {
     "id": 9,
-    "name": "Item 9",
+    "name": "Magic Mouse",
     "img": "../assets/imgs/1.png",
     "quantities": 6,
     "price": 6.99,
@@ -82,7 +82,7 @@
   },
   {
     "id": 10,
-    "name": "Item 10",
+    "name": "Laptop Charger",
     "img": "./assets/imgs/2.png",
     "quantities": 2,
     "price": 30.99,

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/auth/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InvoiceItemComponent } from './components/invoice/invoice-item/invoice-item.component';
+import { TitleCasePipe } from './pipe/titlecase.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { InvoiceItemComponent } from './components/invoice/invoice-item/invoice-
     EditInvoiceComponent,
     LoginComponent,
     InvoiceItemComponent,
+    TitleCasePipe
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-header">
-    <h5 class="card-title mb-0"> {{invoice?.name}}</h5>
+    <h5 class="card-title mb-0"> {{invoice?.name | titlecase}}</h5>
   </div>
   <div class="card-body">
     <p class="card-text"> Price: {{invoice?.price }} </p>
     <p class="card-text"> Quantity: {{invoice?.quantity }} </p>
-    <p class="card-text"> Payment Status: {{invoice?.paymentStatus }} </p>
-    <p class="card-text"> Payment Type: {{invoice?.paymentType }} </p>
-    <p class="card-text"> Item: {{invoice?.item?.name }} </p>
+    <p class="card-text"> Payment Status: {{invoice?.paymentStatus | titlecase }} </p>
+    <p class="card-text"> Payment Type: {{invoice?.paymentType | titlecase }} </p>
+    <p class="card-text"> Item: {{invoice?.item?.name | titlecase}} </p>
   </div>
   <div class="card-footer" *ngIf="user?.role == userRoles?.Admin">
     <div class="d-flex align-items-center justify-content-between">

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceService } from 'src/app/services/invoice.service';
@@ -18,6 +18,7 @@ export class CreateInvoiceComponent {
   updatedInvoice: any
   characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   selectedItem: any
+  @Output() hideShowComponent = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -70,8 +71,7 @@ export class CreateInvoiceComponent {
       let saveData = this.invoiceService.svaeToLocalStorage(this.invoices)
       console.log('All invoices:-', this.invoices);
       if (saveData) alert('Invoice created successfully!')
-      // this.router.navigate(['']);
-      location.reload()
+      this.hideShowComponent.emit();
     }
   }
 
@@ -86,13 +86,13 @@ export class CreateInvoiceComponent {
 
     if (this.invoiceForm.valid) {
       this.invoiceService.removeFromLocalStorage()
-      Object.assign(this.invoiceForm.value, { id: this.generateRandomKey() })
+      Object.assign(this.invoiceForm.value, { id: this.invoiceID })
       let item = this.items.find((u: any) => u.id === Number(this.selectedItem));
       Object.assign(this.invoiceForm.value, { item: item })
       this.invoices.push(this.invoiceForm.value)
       let updateData = this.invoiceService.updateDataInLocalStorage(this.invoices)
-      if (updateData) alert('Invoice updated successfully!')
       console.log('All invoices:-', this.invoices);
+      if (updateData) alert('Invoice updated successfully!')
       this.router.navigate(['/']);
     }
   }
