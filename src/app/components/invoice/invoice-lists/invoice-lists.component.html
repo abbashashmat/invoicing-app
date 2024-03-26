@@ -18,7 +18,7 @@
 
 <h2 *ngIf="invoices.length != 0 && showList && !showForm" class="text-center mt-5">Invoice List</h2>
 <div *ngIf="invoices.length != 0 && showList && !showForm"
-  style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;margin:20px;">
+  style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px;margin:20px;">
   <div *ngFor="let invoice of invoices">
     <app-invoice-item [invoice]="invoice"></app-invoice-item>
   </div>
