@@ -1,14 +1,18 @@
-<div class="card-body">
-  <div>
-    <h5 class="card-title"> {{invoice?.name}}</h5>
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title mb-0"> {{invoice?.name}}</h5>
+  </div>
+  <div class="card-body">
     <p class="card-text"> Price: {{invoice?.price }} </p>
     <p class="card-text"> Quantity: {{invoice?.quantity }} </p>
     <p class="card-text"> Payment Status: {{invoice?.paymentStatus }} </p>
     <p class="card-text"> Payment Type: {{invoice?.paymentType }} </p>
     <p class="card-text"> Item: {{invoice?.item?.name }} </p>
-    <div class="d-flex align-items-center justify-content-between" *ngIf="user?.role == userRoles?.Admin">
-      <button class="btn btn-primary" (click)="editInvoice(invoice?.id)"> Edit</button>
-      <button class="btn btn-primary" (click)="deleteInvoice(invoice?.id)"> Delete</button>
+  </div>
+  <div class="card-footer" *ngIf="user?.role == userRoles?.Admin">
+    <div class="d-flex align-items-center justify-content-between">
+      <button class="btn btn-primary w-50 me-1" (click)="editInvoice(invoice?.id)"> Edit</button>
+      <button class="btn btn-danger w-50" (click)="deleteInvoice(invoice?.id)"> Delete</button>
     </div>
   </div>
 </div>
