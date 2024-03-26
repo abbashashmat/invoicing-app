@@ -32,7 +32,7 @@ export class InvoiceListsComponent {
   }
 
   logout() {
-    localStorage.clear()
+    localStorage.removeItem('userId')
     location.reload()
   }
 }
