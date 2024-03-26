@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InvoiceService } from 'src/app/services/invoice.service';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class CreateInvoiceComponent {
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private itemService: ItemService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private invoiceService: InvoiceService) {
     this.invoiceForm = this.formBuilder.group({
       name: ['', Validators.required],
       quantity: ['', Validators.required],
@@ -40,9 +42,7 @@ export class CreateInvoiceComponent {
     this.invoiceID = history.state.id;
     console.log('Received ID:', this.invoiceID)
     if (this.invoiceID) {
-      let data = localStorage.getItem('invoices')
-      data ? this.invoices = JSON.parse(data) : []
-      console.log('invoices:-', this.invoices)
+      this.invoices = this.invoiceService.getDataFromLocalStorage()
       this.updatedInvoice = this.invoices.find((u: any) => u.id === this.invoiceID);
       this.invoiceForm.patchValue({
         name: this.updatedInvoice.name,
@@ -61,18 +61,16 @@ export class CreateInvoiceComponent {
     }
 
     if (this.invoiceForm.valid) {
-      let data = localStorage.getItem('invoices')
-      data ? this.invoices = JSON.parse(data) : []
-      console.log('invoices:-', this.invoices)
-      localStorage.removeItem('invoices')
+      this.invoices = this.invoiceService.getDataFromLocalStorage()
+      this.invoiceService.removeFromLocalStorage()
       Object.assign(this.invoiceForm.value, { id: this.generateRandomKey() })
       let item = this.items.find((u: any) => u.id === Number(this.selectedItem));
       Object.assign(this.invoiceForm.value, { item: item })
       this.invoices.push(this.invoiceForm.value)
-      localStorage.setItem('invoices', JSON.stringify(this.invoices))
+      let saveData = this.invoiceService.svaeToLocalStorage(this.invoices)
       console.log('All invoices:-', this.invoices);
-      alert('Invoice created successfully!')
-      this.router.navigate(['']);
+      if (saveData) alert('Invoice created successfully!')
+      // this.router.navigate(['']);
       location.reload()
     }
   }
@@ -87,10 +85,13 @@ export class CreateInvoiceComponent {
     }
 
     if (this.invoiceForm.valid) {
-      localStorage.removeItem('invoices')
+      this.invoiceService.removeFromLocalStorage()
       Object.assign(this.invoiceForm.value, { id: this.generateRandomKey() })
+      let item = this.items.find((u: any) => u.id === Number(this.selectedItem));
+      Object.assign(this.invoiceForm.value, { item: item })
       this.invoices.push(this.invoiceForm.value)
-      localStorage.setItem('invoices', JSON.stringify(this.invoices))
+      let updateData = this.invoiceService.updateDataInLocalStorage(this.invoices)
+      if (updateData) alert('Invoice updated successfully!')
       console.log('All invoices:-', this.invoices);
       this.router.navigate(['/']);
     }
